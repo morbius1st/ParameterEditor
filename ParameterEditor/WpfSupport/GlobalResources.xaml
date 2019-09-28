@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    x:Class="ParameterEditor.WpfSupport.GlobalResources"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ParameterEditor.WpfSupport"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <GridLength x:Key="SidebarWidth">130</GridLength>
+    <Thickness x:Key="SidebarMargin">15</Thickness>
+
+    <sys:Double x:Key="BtnHeight">32</sys:Double>
+
+</ResourceDictionary>

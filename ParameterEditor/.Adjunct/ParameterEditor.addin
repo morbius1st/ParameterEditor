@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Application Parameter Editor</Name>
+    <Assembly>ParameterEditor.dll</Assembly>
+    <FullClassName>ParameterEditor.AppRibbonPE</FullClassName>
+    <ClientId>7542D4A5-5452-4A7C-93A4-FAD1EA3F2701</ClientId>
+    <VendorId>pro.cyberstudio</VendorId>
+    <VendorDescription>CyberStudio</VendorDescription>
+  </AddIn>
+</RevitAddIns>

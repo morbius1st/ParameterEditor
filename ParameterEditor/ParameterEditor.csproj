@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{699E5CE6-A8F1-439D-9B20-B01A81322C9A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ParameterEditor</RootNamespace>
+    <AssemblyName>ParameterEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2017\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\UtilityLibrary\UtilityLibrary\CsExtensions.cs">
+      <Link>ExtReference\CsExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\UtilityLibrary\UtilityLibrary\CsUtilitiesMedia.cs">
+      <Link>ExtReference\CsUtilitiesMedia.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\UtilityLibrary\UtilityLibrary\MessageUtilities.cs">
+      <Link>ExtReference\MessageUtilities.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppRibbonPE.cs" />
+    <Compile Include="DebugWin\DataVue.xaml.cs">
+      <DependentUpon>DataVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DebugWin\DebugWindow.xaml.cs">
+      <DependentUpon>DebugWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DebugWin\DebugWinSupport\DesignData.cs" />
+    <Compile Include="DebugWin\DebugWinSupport\ParameterDebugSupport.cs" />
+    <Compile Include="DebugWin\DebugWinSupport\TestData.cs" />
+    <Compile Include="MainWin\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWin\MainWindowSupport\MainWindowSupport.cs" />
+    <Compile Include="MainWin\MainWindowSupport\ValueConverters.cs" />
+    <Compile Include="Managers\ConfigurationMgr.cs" />
+    <Compile Include="Managers\ParameterInfo\AParameterValue.cs" />
+    <Compile Include="Managers\ParameterInfo\ColumnData.cs" />
+    <Compile Include="Managers\ParameterInfo\ColumnSpec.cs" />
+    <Compile Include="Managers\ParameterInfo\ParameterData.cs" />
+    <Compile Include="Managers\ParameterInfo\ParameterValue.cs" />
+    <Compile Include="Managers\ParameterMgr.cs" />
+    <Compile Include="Managers\ParameterSupport\ParametersSupport.cs" />
+    <Compile Include="Managers\Support\FontInfo.cs" />
+    <Compile Include="ParameterEdit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WpfSupport\CustomProperties.cs" />
+    <Compile Include="WpfSupport\EmptyWin\MT.xaml.cs">
+      <DependentUpon>MT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfSupport\GlobalResources.xaml.cs">
+      <DependentUpon>GlobalResources.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\information16.png" />
+    <EmbeddedResource Include="Assets\information32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".Adjunct\ParameterEditor.addin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DebugWin\DataVue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DebugWin\DebugWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWin\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfSupport\EmptyWin\MT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfSupport\GlobalResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Accessory\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>echo off
+echo *** Configuration (at pre-build): $(ConfigurationName) ***</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>echo off
+if $(ConfigurationName) == Debug (echo "*** Debug ***")
+if $(ConfigurationName) == Release (echo "*** Release ***")
+copy /y "$(ProjectDir).Adjunct\$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
+if $(ConfigurationName) == Debug (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2017")
+if $(ConfigurationName) == Release (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2017")
+robocopy $(TargetDir) $(AppData)\Autodesk\REVIT\Addins\2017 *.resources.dll /s /ns /nc /np /njh /njs
+if errorlevel 4 goto BuildEventFailed
+if errorlevel 0 goto end
+:BuildEventFailed echo FileCopy for $(ProjectName) Failed
+exit 1
+:end 
+exit 0
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

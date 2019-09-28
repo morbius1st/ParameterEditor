@@ -1,0 +1,349 @@
+﻿<Window
+    x:Class="ParameterEditor.DebugWin.DataVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:data="clr-namespace:ParameterEditor.Managers"
+		xmlns:info="clr-namespace:ParameterEditor.Managers.ParameterInfo"
+		xmlns:local="clr-namespace:ParameterEditor.DebugWin"
+		xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Name="dataVue"
+    Title="View"
+    Width="1200"
+    Height="800"
+    Background="#333333"
+    DataContext="{Binding ElementName=dataVue}"
+    mc:Ignorable="d">
+
+
+    <Window.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../WpfSupport/GlobalResources.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<Style x:Key="FontLabel"
+					TargetType="Label"
+					>
+				<Setter Property="HorizontalAlignment" Value="Center" />
+				<Setter Property="HorizontalContentAlignment" Value="Center" />
+				<Setter Property="Margin" Value="0,0,5,0" />
+				<Setter Property="Padding" Value="0" />
+
+			</Style>
+
+			<DataTemplate x:Key="ColumnFontDetails"
+					DataType="{x:Type info:ColumnSpec}"
+					>
+				<StackPanel Orientation="Horizontal">
+					<Border
+							Width="460"
+							HorizontalAlignment="Left"
+							BorderThickness="1"
+							BorderBrush="Red"
+							>
+						<Grid
+								Height="30"
+								HorizontalAlignment="Stretch"
+								>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="54" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+
+							</Grid.RowDefinitions>
+
+							<Label Content="Header"
+									Grid.Row="0"
+									Grid.Column="0"
+									HorizontalContentAlignment="Left"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="font:"
+									Grid.Row="1"
+									Grid.Column="0"
+									HorizontalContentAlignment="Left"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="family"
+									Grid.Row="0"
+									Grid.Column="1"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding HeaderFont.FontFamily}"
+									Grid.Row="1"
+									Grid.Column="1"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="size"
+									Grid.Row="0"
+									Grid.Column="2"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding HeaderFont.FontSize}"
+									Grid.Row="1"
+									Grid.Column="2"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="style"
+									Grid.Row="0"
+									Grid.Column="3"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding HeaderFont.FontStyle}"
+									Grid.Row="1"
+									Grid.Column="3"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="weight"
+									Grid.Row="0"
+									Grid.Column="4"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding HeaderFont.FontWeight}"
+									Grid.Row="1"
+									Grid.Column="4"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="stretch"
+									Grid.Row="0"
+									Grid.Column="5"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding HeaderFont.FontStretch}"
+									Grid.Row="1"
+									Grid.Column="5"
+									Style="{StaticResource FontLabel}"
+									/>
+
+						</Grid>
+					</Border>
+					<Border
+							Margin="0,0.5,0,0"
+							Width="460"
+							HorizontalAlignment="Left"
+							BorderThickness="1"
+							BorderBrush="Blue"
+							>
+						<Grid
+								Height="30"
+								HorizontalAlignment="Stretch"
+								>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="54" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+
+							</Grid.RowDefinitions>
+
+							<Label Content="Field"
+									Grid.Row="0"
+									Grid.Column="0"
+									HorizontalContentAlignment="Left"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="font:"
+									Grid.Row="1"
+									Grid.Column="0"
+									HorizontalContentAlignment="Left"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="family"
+									Grid.Row="0"
+									Grid.Column="1"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding FieldFont.FontFamily}"
+									Grid.Row="1"
+									Grid.Column="1"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="size"
+									Grid.Row="0"
+									Grid.Column="2"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding FieldFont.FontSize}"
+									Grid.Row="1"
+									Grid.Column="2"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="style"
+									Grid.Row="0"
+									Grid.Column="3"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding FieldFont.FontStyle}"
+									Grid.Row="1"
+									Grid.Column="3"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="weight"
+									Grid.Row="0"
+									Grid.Column="4"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding FieldFont.FontWeight}"
+									Grid.Row="1"
+									Grid.Column="4"
+									Style="{StaticResource FontLabel}"
+									/>
+
+							<Label Content="stretch"
+									Grid.Row="0"
+									Grid.Column="5"
+									Style="{StaticResource FontLabel}"
+									/>
+							<Label Content="{Binding FieldFont.FontStretch}"
+									Grid.Row="1"
+									Grid.Column="5"
+									Style="{StaticResource FontLabel}"
+									/>
+
+						</Grid>
+					</Border>
+				</StackPanel>
+			</DataTemplate>
+
+			<DataTemplate x:Key="ParameterValuesDetails"
+					DataType="{x:Type info:ParameterData}"
+					>
+				<DataGrid
+						AutoGenerateColumns="True"
+						ItemsSource="{Binding ParameterValues}"
+						/>
+			</DataTemplate>
+
+		</ResourceDictionary>
+
+	</Window.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="100" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="{StaticResource SidebarWidth}" />
+		</Grid.ColumnDefinitions>
+
+		<StackPanel
+				Grid.Row="0"
+				Grid.RowSpan="2"
+				Grid.Column="1"
+				Margin="15"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Bottom"
+				Orientation="Vertical"
+				>
+
+			<Button Content="Show Info"
+					Margin="0,0,0,10"
+					Height="{StaticResource BtnHeight}"
+					Click="ButtonView_Click"
+					/>
+
+			<Button Content="Debug"
+					Margin="0,0,0,10"
+					Height="{StaticResource BtnHeight}"
+					Click="ButtonDebug_Click"
+					/>
+
+			<Button Content="Exit"
+					Height="{StaticResource BtnHeight}"
+					FontWeight="Bold"
+					Click="Button_Click"
+					/>
+
+		</StackPanel>
+
+		<TextBlock x:Name="textBlock"
+				Grid.Row="1"
+				Grid.Column="0"
+				Margin="15"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				FontFamily="DejaVu Sans Mono"
+				Text="{Binding WindowMessage}"
+				TextWrapping="Wrap"
+				Foreground="White"
+				/>
+
+		<ScrollViewer
+				Grid.Row="0"
+				Grid.Column="0"
+				Margin="{StaticResource SidebarMargin}"
+				Height="600"
+				VerticalAlignment="Top"
+				HorizontalScrollBarVisibility="Visible"
+				VerticalScrollBarVisibility="Visible"
+				>
+
+			<StackPanel
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Orientation="Vertical"
+					>
+
+
+				<DataGrid Name="DgColumnData"
+						Height="300"
+						VerticalAlignment="Stretch"
+						d:DataContext="{d:DesignInstance Type=data:ParameterMgr,
+																						 IsDesignTimeCreatable=True}"
+						AutoGenerateColumns="True"
+						AutoGeneratingColumn="DgColumnData_OnAutoGeneratingColumn"
+						DataContext="{Binding Source={x:Static data:ParameterMgr.ParamMgr}}"
+						RowDetailsTemplate="{DynamicResource ColumnFontDetails}"
+						RowDetailsVisibilityMode="Visible"
+						ItemsSource="{Binding Path=Cd.ColumnSpecs}"
+						/>
+
+				<DataGrid Name="DgParameterData"
+						Height="320"
+						VerticalAlignment="Stretch"
+						d:DataContext="{d:DesignInstance Type=data:ParameterMgr,
+																						 IsDesignTimeCreatable=True}"
+						AutoGenerateColumns="True"
+						AutoGeneratingColumn="DgParameterData_OnAutoGeneratingColumn"
+						DataContext="{Binding Source={x:Static data:ParameterMgr.ParamMgr}}"
+						RowDetailsTemplate="{DynamicResource ParameterValuesDetails}"
+						RowDetailsVisibilityMode="Visible"
+						ItemsSource="{Binding Path=Pd}"
+						/>
+
+
+			</StackPanel>
+		</ScrollViewer>
+
+	</Grid>
+
+</Window>
