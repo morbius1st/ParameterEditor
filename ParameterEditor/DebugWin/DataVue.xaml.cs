@@ -48,8 +48,8 @@ namespace ParameterEditor.DebugWin
 
 		private void ButtonDebug_Click(object sender, RoutedEventArgs e)
 		{
-			int a = ParameterMgr.Cd.ColumnSpecs.Count;
-			int b = ParameterMgr.Pd.Count;
+			int a = ParameterMgr.ParamMgr.Cd.ColumnSpecs.Count;
+			int b = ParameterMgr.ParamMgr.Pd.Count;
 
 
 			Debug.WriteLine("At Debug| ");
@@ -59,8 +59,8 @@ namespace ParameterEditor.DebugWin
 		{
 			ParameterMgr.ParamMgr.Initalize(ElementTypeGroup.TextNoteType);
 
-			DgColumnData.ItemsSource = ParameterMgr.Cd.ColumnSpecs;
-			DgParameterData.ItemsSource = ParameterMgr.Pd;
+//			DgColumnData.ItemsSource = ParameterMgr.Cd.ColumnSpecs;
+//			DgParameterData.ItemsSource = ParameterMgr.Pd;
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)

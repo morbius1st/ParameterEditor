@@ -235,8 +235,11 @@
 			<DataTemplate x:Key="ParameterValuesDetails"
 					DataType="{x:Type info:ParameterData}"
 					>
-				<DataGrid
+				<DataGrid Name="DataGridInnerPV"
 						AutoGenerateColumns="True"
+						AreRowDetailsFrozen="False"
+						CanUserAddRows="False"
+						HeadersVisibility="All"
 						ItemsSource="{Binding ParameterValues}"
 						/>
 			</DataTemplate>
@@ -325,6 +328,9 @@
 						RowDetailsTemplate="{DynamicResource ColumnFontDetails}"
 						RowDetailsVisibilityMode="Visible"
 						ItemsSource="{Binding Path=Cd.ColumnSpecs}"
+						HeadersVisibility="All"
+						AreRowDetailsFrozen="False"
+						CanUserAddRows="False"
 						/>
 
 				<DataGrid Name="DgParameterData"
@@ -338,6 +344,10 @@
 						RowDetailsTemplate="{DynamicResource ParameterValuesDetails}"
 						RowDetailsVisibilityMode="Visible"
 						ItemsSource="{Binding Path=Pd}"
+						HeadersVisibility="All"
+						AreRowDetailsFrozen="False"
+						CanUserAddRows="False"
+
 						/>
 
 

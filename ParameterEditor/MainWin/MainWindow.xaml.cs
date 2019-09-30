@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using ParameterEditor.Managers;
-
 using Autodesk.Revit.DB;
 using ParameterEditor.DebugWin;
+using ParameterEditor.Managers.ParameterInfo;
 
 namespace ParameterEditor.MainWin
 {
@@ -14,17 +16,15 @@ namespace ParameterEditor.MainWin
 	#region private fields
 
 		private string windowMessage;
-		private string typeName = "Text";
+		private string typeName = ElementTypeGroup.TextNoteType.ToString();
+		private bool updateColumn;
 
-	#endregion
+		#endregion
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
-//			Pm = new ParameterMgr();
-//
-//			lbc = new ConfigurationMgr();
 		}
 
 	#region properties
@@ -43,7 +43,6 @@ namespace ParameterEditor.MainWin
 			}
 		}
 
-
 		public string TypeName
 		{
 			get => typeName;
@@ -52,7 +51,17 @@ namespace ParameterEditor.MainWin
 				typeName = value;
 				OnPropertyChange();
 			}
-		} 
+		}
+
+		public bool UpdateColumn
+		{
+			get => updateColumn;
+			set
+			{
+				updateColumn = value;
+				OnPropertyChange();
+			}
+		}
 
 	#endregion
 
@@ -65,26 +74,47 @@ namespace ParameterEditor.MainWin
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
 		}
 
-		#endregion
+	#endregion
+
+	#region events
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-//			Pm.Initalize(ElementTypeGroup.TextNoteType);
+			//Pm.Initalize(ElementTypeGroup.ModelTextType);
+
+			//DgFamilyType.ItemsSource = ParameterMgr.Pd;
 		}
 
 		private void ButtonVueData_Click(object sender, RoutedEventArgs e)
 		{
 			(new DataVue()).ShowDialog();
 		}
-		
+
 		private void ButtonVueDebug_Click(object sender, RoutedEventArgs e)
 		{
 			(new DebugWindow()).ShowDialog();
+		}
+
+		private void ButtonDebug_Click(object sender, RoutedEventArgs e)
+		{
+			Debug.WriteLine("At Debug");
+
+			ParameterMgr.ParamMgr.Initalize(ElementTypeGroup.ModelTextType);
+//
+//			DgFamilyType.ItemsSource = ParameterMgr.ParamMgr.Pd;
 		}
 
 		private void ButtonExit_Click(object sender, RoutedEventArgs e)
 		{
 			Close();
 		}
+
+		private void DgFamilyType_ColumnReordered(object sender, DataGridColumnEventArgs e)
+		{
+			UpdateColumn = !updateColumn;
+		}
+
+	#endregion
+
 	}
 }

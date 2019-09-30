@@ -12,8 +12,8 @@ namespace ParameterEditor.DebugWin.DebugWinSupport
 		{
 			// I need to create date for the above, already initialized data structures
 
-			Pd = new ObservableCollection<ParameterData>();
-			Cd = new ColumnData();
+//			Pd = new ObservableCollection<ParameterData>();
+//			Cd = new ColumnData();
 
 			ObservableCollection<AParameterValue> p;
 			ParameterData pd;

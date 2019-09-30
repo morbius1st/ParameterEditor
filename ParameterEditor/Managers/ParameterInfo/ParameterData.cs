@@ -21,13 +21,14 @@ namespace ParameterEditor.Managers.ParameterInfo
 		public bool Selected { get; set; } = false;
 		public string TypeName { get; set; }
 
-		public ObservableCollection<AParameterValue> ParameterValues { get; set; }
+		public ObservableCollection<AParameterValue> ParameterValues { get; set; } =
+			new ObservableCollection<AParameterValue>();
 
 		public ParameterData(string typeName)
 		{
 			TypeName = typeName;
 
-			ParameterValues = new ObservableCollection<AParameterValue>();
+			ParameterValues.Clear();
 		}
 
 		public ParameterData() { }

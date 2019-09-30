@@ -13,40 +13,12 @@ namespace ParameterEditor.WpfSupport
 
 	public class CustomProperties
 	{
+
+	#region GenericBoolOne
+
 		public static readonly DependencyProperty GenericBoolOneProperty = DependencyProperty.RegisterAttached(
 			"GenericBoolOne", typeof(bool), typeof(CustomProperties),
 			new PropertyMetadata(false));
-		
-		public static readonly DependencyProperty GenericBoolTwoProperty = DependencyProperty.RegisterAttached(
-			"GenericBoolTwo", typeof(bool), typeof(CustomProperties),
-			new PropertyMetadata(false));
-		
-		public static readonly DependencyProperty GenericIntOneProperty = DependencyProperty.RegisterAttached(
-			"GenericIntOne", typeof(int), typeof(CustomProperties),
-			new PropertyMetadata(0));
-		
-		public static readonly DependencyProperty GenericObjectOneProperty = DependencyProperty.RegisterAttached(
-			"GenericObjectOne", typeof(object), typeof(CustomProperties),
-			new PropertyMetadata(0));
-		
-		public static readonly DependencyProperty GenericObjectTwoProperty = DependencyProperty.RegisterAttached(
-			"GenericObjectTwo", typeof(object), typeof(CustomProperties),
-			new PropertyMetadata(0));
-
-		public static readonly DependencyProperty GenericFontProperty = DependencyProperty.RegisterAttached(
-			"GenericFont", typeof(FontInfo), typeof(CustomProperties),
-			new PropertyMetadata(new FontInfo("Arial")));
-
-		public static readonly DependencyProperty GenericFontFamilyProperty = DependencyProperty.RegisterAttached(
-			"GenericFontFamily", typeof(FontFamily), typeof(CustomProperties),
-			new PropertyMetadata(new FontFamily("Arial")));
-
-		public static readonly DependencyProperty ErrorFlagProperty = DependencyProperty.RegisterAttached(
-			"ErrorFlag", typeof(bool), typeof(CustomProperties),
-			new PropertyMetadata(false));
-
-
-	#region GenericBoolOne
 
 		public static void SetGenericBoolOne(UIElement e, bool value)
 		{
@@ -61,6 +33,10 @@ namespace ParameterEditor.WpfSupport
 	#endregion
 		
 	#region GenericBoolTwo
+		
+		public static readonly DependencyProperty GenericBoolTwoProperty = DependencyProperty.RegisterAttached(
+			"GenericBoolTwo", typeof(bool), typeof(CustomProperties),
+			new PropertyMetadata(false));
 
 		public static void SetGenericBoolTwo(UIElement e, bool value)
 		{
@@ -75,6 +51,10 @@ namespace ParameterEditor.WpfSupport
 	#endregion
 				
 	#region GenericIntOne
+		
+		public static readonly DependencyProperty GenericIntOneProperty = DependencyProperty.RegisterAttached(
+			"GenericIntOne", typeof(int), typeof(CustomProperties),
+			new PropertyMetadata(0));
 
 		public static void SetGenericIntOne(UIElement e, int value)
 		{
@@ -89,6 +69,10 @@ namespace ParameterEditor.WpfSupport
 	#endregion
 				
 	#region GenericObjectOne
+		
+		public static readonly DependencyProperty GenericObjectOneProperty = DependencyProperty.RegisterAttached(
+			"GenericObjectOne", typeof(object), typeof(CustomProperties),
+			new PropertyMetadata(0));
 
 		public static void SetGenericObjectOne(UIElement e, object value)
 		{
@@ -105,6 +89,10 @@ namespace ParameterEditor.WpfSupport
 	#endregion
 						
 	#region GenericObjectTwo
+		
+		public static readonly DependencyProperty GenericObjectTwoProperty = DependencyProperty.RegisterAttached(
+			"GenericObjectTwo", typeof(object), typeof(CustomProperties),
+			new PropertyMetadata(0));
 
 		public static void SetGenericObjectTwo(UIElement e, object value)
 		{
@@ -120,6 +108,10 @@ namespace ParameterEditor.WpfSupport
 
 	#region GenericFont
 
+		public static readonly DependencyProperty GenericFontProperty = DependencyProperty.RegisterAttached(
+			"GenericFont", typeof(FontInfo), typeof(CustomProperties),
+			new PropertyMetadata(new FontInfo("Arial")));
+
 		public static void SetGenericFont(UIElement e, FontInfo value)
 		{
 			e.SetValue(GenericFontProperty, value);
@@ -132,7 +124,11 @@ namespace ParameterEditor.WpfSupport
 
 	#endregion
 
-	#region GenericFont
+	#region GenericFontFamily
+
+		public static readonly DependencyProperty GenericFontFamilyProperty = DependencyProperty.RegisterAttached(
+			"GenericFontFamily", typeof(FontFamily), typeof(CustomProperties),
+			new PropertyMetadata(new FontFamily("Arial")));
 
 		public static void SetGenericFontFamily(UIElement e, FontFamily value)
 		{
@@ -147,6 +143,10 @@ namespace ParameterEditor.WpfSupport
 	#endregion
 
 	#region ErrorFlag
+
+		public static readonly DependencyProperty ErrorFlagProperty = DependencyProperty.RegisterAttached(
+			"ErrorFlag", typeof(bool), typeof(CustomProperties),
+			new PropertyMetadata(false));
 
 		public static void SetErrorFlag(UIElement e, bool value)
 		{
@@ -163,7 +163,7 @@ namespace ParameterEditor.WpfSupport
 	#region GenericStringOne
 
 		public static readonly DependencyProperty GenericStringOneProperty = DependencyProperty.RegisterAttached(
-			"GenericStringOne", typeof(string), typeof(CustomProperties), new PropertyMetadata(""));
+			"GenericStringOne", typeof(string), typeof(CustomProperties), new PropertyMetadata(default(string)));
 
 		public static void SetGenericStringOne(UIElement e, string value)
 		{
@@ -173,6 +173,23 @@ namespace ParameterEditor.WpfSupport
 		public static string GetGenericStringOne(UIElement e)
 		{
 			return (string) e.GetValue(GenericStringOneProperty);
+		}
+
+	#endregion
+
+	#region GenericStringTwo
+
+		public static readonly DependencyProperty GenericStringTwoProperty = DependencyProperty.RegisterAttached(
+			"GenericStringTwo", typeof(string), typeof(CustomProperties), new PropertyMetadata(default(string)));
+
+		public static void SetGenericStringTwo(UIElement e, string value)
+		{
+			e.SetValue(GenericStringTwoProperty, value);
+		}
+
+		public static string GetGenericStringTwo(UIElement e)
+		{
+			return (string) e.GetValue(GenericStringTwoProperty);
 		}
 
 	#endregion

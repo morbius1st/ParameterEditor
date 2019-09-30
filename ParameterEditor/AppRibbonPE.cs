@@ -43,7 +43,6 @@ namespace ParameterEditor
 
 				app.ControlledApplication.ApplicationInitialized += OnAppInitalized;
 
-
 				// create the ribbon tab first - this is the top level
 				// ui item.  below this will be the panel that is "on" the tab
 				// and below this will be a pull down or split button that is "on" the panel;

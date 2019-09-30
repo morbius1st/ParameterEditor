@@ -37,7 +37,7 @@ namespace ParameterEditor.MainWin.MainWindowSupport
 			Pm.CanUserDeleteColumns = false;
 			Pm.CanUserAddColumns = false;
 
-			dg.ItemsSource = ParameterMgr.Pd;
+			dg.ItemsSource = ParameterMgr.ParamMgr.Pd;
 
 		}
 

@@ -27,24 +27,20 @@ namespace ParameterEditor.Managers
 	{
 		private readonly string N = System.Environment.NewLine;
 
-		public static ObservableCollection<ParameterData> Pd { get; set; } = new ObservableCollection<ParameterData>();
-		public static ColumnData Cd { get; set; } = new ColumnData();
+		public ObservableCollection<ParameterData> Pd { get; set; } = new ObservableCollection<ParameterData>();
+		public ColumnData Cd { get; set; } = new ColumnData();
 
-		private static readonly ParameterMgr Pm;
-
-		private ParameterMgr() { }
-
-		static ParameterMgr()
+		private ParameterMgr()
 		{
-			Pm = new ParameterMgr();
-
 			LoadDesignData();
 		}
 
-		public static ParameterMgr ParamMgr
-		{ 
-			get => Pm;
+		static ParameterMgr()
+		{
+			ParamMgr = new ParameterMgr();
 		}
+
+		public static ParameterMgr ParamMgr { get; }
 
 		// overall datagrid properties
 		public bool CanUserAddRows { get; set; } = false;
@@ -52,7 +48,7 @@ namespace ParameterEditor.Managers
 		public bool CanUserAddColumns { get; set; } = false;
 		public bool CanUserDeleteColumns { get; set; } = false;
 
-		public static void LoadDesignData()
+		public void LoadDesignData()
 		{
 			DesignData.LoadDesignData(Pd, Cd);
 		}
@@ -60,8 +56,15 @@ namespace ParameterEditor.Managers
 		// load a family's data from the test data
 		public void Initalize(ElementTypeGroup type)
 		{
-			Pd = new ObservableCollection<ParameterData>();
-			Cd = new ColumnData();
+//			Pd = new ObservableCollection<ParameterData>();
+//			OnPropertyChange("Pd");
+//			Cd = new ColumnData();
+//			OnPropertyChange("Cd");
+
+			// this will produce a minor binding error as, for a brief moment, the 
+			// collections get reported as changed but are empty (invalid index)
+			Pd.Clear();
+			Cd.ColumnSpecs.Clear();
 
 			Dictionary<string, IList<Parameter>> k = ParametersSupport.GetAllTypes(type);
 
@@ -82,7 +85,8 @@ namespace ParameterEditor.Managers
 
 			UpdateTitles();
 
-
+			OnPropertyChange("Pd");
+			OnPropertyChange("Cd");
 		}
 
 		private void AddRow( string familyName, IList<Parameter> parameters)
@@ -112,7 +116,6 @@ namespace ParameterEditor.Managers
 
 			Pd.Add(pd);
 		}
-
 
 		private void UpdateTitles()
 		{

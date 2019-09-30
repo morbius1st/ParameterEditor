@@ -57,6 +57,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="RevitAPI">
       <HintPath>C:\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -169,9 +170,9 @@ echo *** Configuration (at pre-build): $(ConfigurationName) ***</PreBuildEvent>
     <PostBuildEvent>echo off
 if $(ConfigurationName) == Debug (echo "*** Debug ***")
 if $(ConfigurationName) == Release (echo "*** Release ***")
-copy /y "$(ProjectDir).Adjunct\$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
-if $(ConfigurationName) == Debug (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2017")
-if $(ConfigurationName) == Release (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2017")
+copy /y "$(ProjectDir).Adjunct\$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\2020"
+if $(ConfigurationName) == Debug (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2020")
+if $(ConfigurationName) == Release (copy /y "$(TargetPath)" "$(AppData)\Autodesk\REVIT\Addins\2020")
 robocopy $(TargetDir) $(AppData)\Autodesk\REVIT\Addins\2017 *.resources.dll /s /ns /nc /np /njh /njs
 if errorlevel 4 goto BuildEventFailed
 if errorlevel 0 goto end

@@ -21,7 +21,7 @@ namespace ParameterEditor.Managers.ParameterInfo
 		private const string SELECTED_COL_TITLE = "☑";
 		private const string FAMILYNAME_COL_TITLE = "Family Name";
 
-		public ObservableCollection<ColumnSpec> ColumnSpecs { get; private set; }
+		public ObservableCollection<ColumnSpec> ColumnSpecs { get; private set; } = new ObservableCollection<ColumnSpec>();
 
 		public  ColumnData()
 		{
@@ -47,7 +47,7 @@ namespace ParameterEditor.Managers.ParameterInfo
 
 			ColumnSpec.Initalize();
 
-			ColumnSpecs  = new ObservableCollection<ColumnSpec>();
+			ColumnSpecs.Clear();
 		}
 
 		public static ColumnSpec SelectedColSpec()
